@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-type animal interface {
-	mover
-	eater
-}
+//type animal interface {
+//	mover
+//	eater
+//}
 type mover interface {
 	move()
 }
@@ -26,7 +26,7 @@ func (c *cat) eater(food string) {
 }
 
 func main() {
-	var a1 animal
+	//var a1 animal
 	d1 := cat{
 		"bosimao",
 		1,
@@ -35,10 +35,11 @@ func main() {
 		name: "jilaolian",
 		feet: 2,
 	}
-	a1 = d1
-	fmt.Println(d1)
-	fmt.Println(d2)
 
 	d1.mover()
 	d1.eater("猫屎")
+	//a1 = d1
+	fmt.Println(d1)
+	fmt.Println(d2)
+
 }
