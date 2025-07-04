@@ -1,24 +1,31 @@
-body {
-  max-width: 800px;
-  margin: 0 auto;
-}
+        body {
+          font-family: Arial, sans-serif;
+          margin: 40px;
+          line-height: 1.6;
+        }
 
-.sender-column {
-  text-align: right;
-}
+        .address {
+          margin-bottom: 20px;
+        }
 
-h1 {
-  font-size: 1.5em;
-}
+        .date {
+          margin-top: 20px;
+        }
 
-h2 {
-  font-size: 1.3em;
-}
+        h2 {
+          margin-top: 40px;
+        }
 
-p,ul,ol,dl,address {
-  font-size: 1.1em;
-}
+        ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
 
-p, li, dd, dt, address {
-  line-height: 1.5;
-}
+        li::before {
+          content: "• ";
+          color: #333;
+        }
+
+        .sender-info-address {
+          text-align: right;
+        }
