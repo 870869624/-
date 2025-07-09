@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全新产品发布</title>
+    <style>
+        :root {
+            --primary-gradient-start: #C084FC;
+            --primary-gradient-end: #7E22CE;
+            --card-bg: #FFFFFF;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --card-bg-hover: #F8F8FF;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --border-radius: 20px;
+            --transition-time: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #F7F7F7;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .bento-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(12, 1fr);
+            margin-top: 0;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            transition: box-shadow var(--transition-time), background-color var(--transition-time), transform var(--transition-time);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            box-shadow: var(--hover-shadow);
+            background-color: var(--card-bg-hover);
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* 渐变色文本 */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .header-card {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 64px 32px;
+            text-align: center;
+        }
+
+        .header-card h1 {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        .slogan {
+            font-size: 28px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            grid-column: span 3;
+            grid-row: span 2;
+        }
+
+        .performance-card {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .tech-card {
+            grid-column: span 3;
+            grid-row: span 2;
+        }
+
+        .use-case-card {
+            grid-column: span 3;
+            grid-row: span 2;
+        }
+
+        .steps-card {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .cta-card {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 32px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            color: white;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform var(--transition-time), box-shadow var(--transition-time);
+            box-shadow: 0 5px 15px rgba(126, 34, 206, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4);
+        }
+
+        /* 进度条样式 */
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #E5E5E5;
+            border-radius: 5px;
+            margin: 16px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        /* 标签样式 */
+        .tag {
+            display: inline-block;
+            background-color: #F2F2F2;
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* 图标样式 */
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--primary-gradient-end);
+        }
+
+        /* 特性列表 */
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--primary-gradient-end);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* 使用步骤样式 */
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .step-number {
+            background-color: var(--primary-gradient-end);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 16px;
+        }
+
+        /* 负卖点样式 */
+        .selling-point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .selling-point-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            color: var(--primary-gradient-end);
+        }
+
+        .selling-point-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .header-card h1 {
+                font-size: 42px;
+            }
+            
+            .header-card, .cta-card {
+                padding: 48px 32px;
+            }
+            
+            .performance-card, .steps-card {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card, .performance-card, .tech-card, .use-case-card, .steps-card {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .header-card h1 {
+                font-size: 36px;
+            }
+            
+            .slogan {
+                font-size: 22px;
+            }
+            
+            .tagline {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bento-grid">
+            <!-- 顶部行：产品名称、标语和主要卖点 -->
+            <div class="card header-card">
+                <h1 class="gradient-text">产品名称</h1>
+                <div class="slogan">产品标语</div>
+                <div class="tagline">
+                    为您的业务提供全新能力，实现前所未有的效率提升与创新突破
+                </div>
+                <div class="selling-points">
+                    <div class="selling-point">
+                        <div class="selling-point-icon">⚡</div>
+                        <h3 class="selling-point-title">核心卖点</h3>
+                        <p>说明核心卖点的简短描述</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 性能指标和数据对比 -->
+            <div class="card performance-card">
+                <h2>性能特点</h2>
+                <p>产品关键性能指标对比</p>
+                
+                <div class="performance-metric">
+                    <h3>关键指标1</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 95%;"></div>
+                    </div>
+                    <p>比传统解决方案提升 <span class="gradient-text">95%</span></p>
+                </div>
+                
+                <div class="performance-metric">
+                    <h3>关键指标2</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 80%;"></div>
+                    </div>
+                    <p>重要指标降低 <span class="gradient-text">40%</span></p>
+                </div>
+                
+                <div class="performance-metric">
+                    <h3>关键指标3</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 65%;"></div>
+                    </div>
+                    <p>核心能力提升 <span class="gradient-text">65%</span></p>
+                </div>
+            </div>
+
+            <!-- 产品特性列表 -->
+            <div class="card feature-card">
+                <h2>核心特性</h2>
+                <p>产品主要功能特点</p>
+                
+                <ul class="features-list">
+                    <li>特性1描述</li>
+                    <li>特性2描述</li>
+                    <li>特性3描述</li>
+                    <li>特性4描述</li>
+                    <li>特性5描述</li>
+                    <li>特性6描述</li>
+                </ul>
+                
+                <div class="tags">
+                    <span class="tag">特性标签1</span>
+                    <span class="tag">特性标签2</span>
+                    <span class="tag">特性标签3</span>
+                    <span class="tag">特性标签4</span>
+                </div>
+            </div>
+
+            <!-- 技术架构和创新点 -->
+            <div class="card tech-card">
+                <h2>技术架构</h2>
+                <p>产品创新技术基础</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="feature-icon">🔬</div>
+                        <h3>核心技术1</h3>
+                        <p>核心技术1的简短描述</p>
+                    </div>
+                    
+                    <div class="tech-item">
+                        <div class="feature-icon">🔌</div>
+                        <h3>核心技术2</h3>
+                        <p>核心技术2的简短描述</p>
+                    </div>
+                    
+                    <div class="tech-item">
+                        <div class="feature-icon">🔒</div>
+                        <h3>核心技术3</h3>
+                        <p>核心技术3的简短描述</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 应用场景和使用案例 -->
+            <div class="card use-case-card">
+                <h2>应用场景</h2>
+                <p>产品适用的主要场景</p>
+                
+                <div class="use-case-item">
+                    <div class="feature-icon">📊</div>
+                    <h3>场景1</h3>
+                    <p>场景1的简短描述</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <div class="feature-icon">🏥</div>
+                    <h3>场景2</h3>
+                    <p>场景2的简短描述</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <div class="feature-icon">🏭</div>
+                    <h3>场景3</h3>
+                    <p>场景3的简短描述</p>
+                </div>
+            </div>
+
+            <!-- 功能特性详细介绍 -->
+            <div class="card feature-card">
+                <h2>功能亮点</h2>
+                <p>产品核心功能详细介绍</p>
+                
+                <div class="feature-detail">
+                    <div class="feature-icon">🧠</div>
+                    <h3>功能1</h3>
+                    <p>功能1的详细描述，解释其价值和优势</p>
+                </div>
+                
+                <div class="feature-detail">
+                    <div class="feature-icon">🌐</div>
+                    <h3>功能2</h3>
+                    <p>功能2的详细描述，解释其价值和优势</p>
+                </div>
+                
+                <div class="feature-detail">
+                    <div class="feature-icon">🔌</div>
+                    <h3>功能3</h3>
+                    <p>功能3的详细描述，解释其价值和优势</p>
+                </div>
+            </div>
+
+            <!-- 使用指南和步骤说明 -->
+            <div class="card steps-card">
+                <h2>快速入门</h2>
+                <p>开始使用产品的简单步骤</p>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>第一步</h3>
+                        <p>第一步的简短说明</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>第二步</h3>
+                        <p>第二步的简短说明</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>第三步</h3>
+                        <p>第三步的简短说明</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>第四步</h3>
+                        <p>第四步的简短说明</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行动号召和联系方式 -->
+            <div class="card cta-card">
+                <h2>立即体验</h2>
+                <p>了解产品如何帮助您的业务实现突破</p>
+                <a href="#" class="cta-button">联系我们</a>
+                <div style="margin-top: 24px;">
+                    <p>或发送邮件至</p>
+                    <p style="font-size: 20px; font-weight: bold; margin-top: 8px;">sales@yourcompany.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 简单的动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            // 当卡片进入视口时添加动画
+            function checkInView() {
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const cardBottom = card.getBoundingClientRect().bottom;
+                    
+                    // 如果卡片在视口内
+                    if(cardTop < window.innerHeight && cardBottom > 0) {
+                        card.style.opacity = '1';
+                    }
+                });
+            }
+            
+            // 初始化卡片为透明
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transition = 'opacity 0.8s ease, transform 0.3s ease';
+            });
+            
+            // 监听滚动事件
+            window.addEventListener('scroll', checkInView);
+            
+            // 初始检查
+            checkInView();
+            
+            // 添加卡片点击效果
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.add('clicked');
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
