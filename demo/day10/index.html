@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1 class="biaoti">我是一个标题</h1>
+        <p id="demo">我包含一些文本。</p>
+        <button type="button" onclick="func()">点击</button>
+    </div>
+
+    <script>
+        function func() {
+            var x = document.getElementsByClassName("biaoti");
+            x[0].style.color = "red";
+
+            document.getElementById("demo").innerHTML = "我被点击了";
+        }
+    </script>
+</body>
+
+</html>
