@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>2025-07-24 工作日志</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 极简“类 Markdown”样式 -->
+    <style>
+        :root {
+            --accent: #0d6efd;
+            --bg: #fdfdfd;
+            --code-bg: #f5f5f5;
+        }
+
+        body {
+            max-width: 680px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+            color: var(--accent);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: .75rem;
+            overflow-x: auto;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: .15em .3em;
+            border-radius: 3px;
+        }
+
+        blockquote {
+            margin: 0;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent);
+            color: #555;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        /* 模仿 Markdown 表格 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: .5rem 0;
+        }
+
+        th,
+        td {
+            padding: .4rem .6rem;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>2025-07-24 工作日志</h1>
+
+    <p>今天主要干了三件事：</p>
+
+    <ul>
+        <li>修掉 <code>v2.1.3</code> 的崩溃 bug</li>
+        <li>给 <strong>CI/CD</strong> 加了缓存步骤</li>
+        <li>写了一篇关于 <em>HTTP/3</em> 的备忘</li>
+    </ul>
+
+    <h2>CI 缓存脚本片段</h2>
+    <pre><code># .github/workflows/ci.yml
+- uses: actions/cache@v4
+  with:
+    path: ~/.npm
+    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}</code></pre>
+
+    <h2>HTTP/3 备忘</h2>
+    <p>核心变化：</p>
+    <table>
+        <thead>
+            <tr>
+                <th>特性</th>
+                <th>HTTP/2</th>
+                <th>HTTP/3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>传输层</td>
+                <td>TCP</td>
+                <td>QUIC (UDP)</td>
+            </tr>
+            <tr>
+                <td>队头阻塞</td>
+                <td>存在</td>
+                <td>无</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <blockquote>
+        <p>注意：QUIC 握手 0-RTT 有重放风险，敏感接口务必额外校验。</p>
+    </blockquote>
+
+    <h2>下一步计划</h2>
+    <ol>
+        <li>把 <code>TODO.md</code> 里剩下的 3 个任务完成</li>
+        <li>跑通性能基准测试</li>
+    </ol>
+
+</body>
+
+</html>
