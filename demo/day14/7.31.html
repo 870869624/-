@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2025年7月30日工作记录，包括代码分析、项目检查等内容">
+    <title>2025-7-31 工作记录</title>
+    <style>
+        :root {
+            --accent: #0d6efd;
+            --bg: #fdfdfd;
+            --code-bg: #f5f5f5;
+        }
+
+        body {
+            max-width: 680px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: #333;
+        }
+
+        .title {
+            line-height: 1.2;
+            color: var(--accent);
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: .15em .3em;
+            border-radius: 3px;
+        }
+
+        footer {
+            clear: both;
+            text-align: left;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* 添加列表项间距 */
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">2025-7-31 工作记录</h1>
+
+    <main>
+        <p>今天的话主要做了以下事情:</p>
+
+        <ul>
+            <li><code>NGEDR</code>的统计分析和报表管理的需求分析：</li>
+            <ul>
+                <li>
+                    统计分析相关的代码在<code>ngedr</code>中的<code>audit_search_statistic_logic.go</code>中，目前缺少版本信息（页面有我没找到）和病毒类型占比
+                </li>
+                <li>报表管理1部分的代码目前看来是调用了<code>erscv</code>中的<code>f:\gopath\src\ersvc\rpc\internal\dashboardoutput\dashboard.go</code>，
+                    但是目前<code>ersvc</code>缺少了部分2病毒防御，病毒防御这块的报表代码在edr中找到了，具体在edr代码的
+                    <code>f:\gopath\src\edr\server\src\git.cloud.top\go\api\manager\dashboardreport\report_handle\dashboard_pdf_layout.go</code>中
+                </li>
+            </ul>
+            <li>改了点uefun，改了下数据库通知配置</li>
+            <li>CHW增加README.md，精简部分代码，删除冗余部分</li>
+        </ul>
+
+        <article>
+            <p>今天的番外任务：</p>
+
+            <ul>
+                <li>
+                    <p><a href="https://blog.csdn.net/qq_59834986/article/details/129830835">#Jenkines学习笔记</a>:
+                        一个来自于CSDN提供的Jenkines学习笔记，主要记录了Jenkines的使用，以及Jenkines的配置。
+                    </p>
+                </li>
+                <li>
+                    <p><a href="https://www.w3school.com.cn/html/html_blocks.asp">#W3cSchool学习</a>: W3cSchool学习。</p>
+                </li>
+            </ul>
+        </article>
+    </main>
+
+    <footer>
+        <p>欢迎关注我的Github：<a href="https://github.com/870869624"><strong>Master Jing</strong></a></p>
+        <p>欢迎关注我的Gitee：<a href="https://gitee.com/jing-haijun"><strong>Master Jing</strong></a></p>
+    </footer>
+</body>
+
+</html>
