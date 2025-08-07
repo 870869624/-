@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2025年7月30日工作记录，包括代码分析、项目检查等内容">
+    <title>2025-8-5 工作记录</title>
+    <style>
+        :root {
+            --accent: #0d6efd;
+            --bg: #fdfdfd;
+            --code-bg: #f5f5f5;
+        }
+
+        body {
+            max-width: 680px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: #333;
+        }
+
+        .title {
+            line-height: 1.2;
+            color: var(--accent);
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: .15em .3em;
+            border-radius: 3px;
+        }
+
+        footer {
+            clear: both;
+            text-align: left;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* 添加列表项间距 */
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">2025-8-5 工作记录</h1>
+
+    <main>
+        <p>今天的话主要做了以下事情:</p>
+
+        <ul>
+            <li><code>NGEDR</code>的统计分析已完成（采用了调用rpc的形式去查询logminerRpc）：</li>
+            <ul>
+                <li>
+                    <p><code>NGEDR</code>要做病毒防护PDF的话，参考了edr查询es的方式，可以去mongo中查出所有对应的杀毒记录，
+                        需注意groupIDS（先获取分组，选择部门就有分组，没选择就返回错误），找出其本身和他下属部门的的杀毒日志记录
+                    </p>
+                </li>
+                <li>报表管理1部分的代码目前看来是调用了<code>erscv</code>中的<code>f:\gopath\src\ersvc\rpc\internal\dashboardoutput\dashboard.go</code>，
+                    但是目前<code>ersvc</code>缺少了部分2病毒防御，病毒防御这块的报表代码在edr中找到了，具体在edr代码的
+                    <code>f:\gopath\src\edr\server\src\git.cloud.top\go\api\manager\dashboardreport\report_handle\dashboard_pdf_layout.go</code>中
+                </li>
+            </ul>
+            <li>ngedr添加了病毒库版本的代码，从ersvc中查询的，调用的assetrpc获取的病毒库版本信息。</li>
+            <li>
+                病毒类型占比，看了一下<code>edr</code>中的代码在<code>f:\gopath\src\edr\server\src\git.cloud.top\go\api\manager\auditauth\audit\es.go</code>
+                是通过构建es查询语句实现的，按照defense_type为virus为筛选条件，所以我目前的想法就是按照威胁响应日志来进行病毒分类查询，因为目前这块只有杀毒一类。
+            </li>
+            <li>
+                <p>刚刚了解到部分信息还是采用wuyang的接口但是需要稍加改动变成自己的接口。</p>
+            </li>
+        </ul>
+
+        <article>
+            <p>今天的番外任务：</p>
+
+            <ul>
+                <li>
+                    <p>又当了懒鬼：晚上能做东西我就补充
+                    </p>
+                </li>
+                <li>
+                    <p></p>
+                </li>
+            </ul>
+        </article>
+    </main>
+
+    <footer>
+        <p>欢迎关注我的Github：<a href="https://github.com/870869624"><strong>Master Jing</strong></a></p>
+        <p>欢迎关注我的Gitee：<a href="https://gitee.com/jing-haijun"><strong>Master Jing</strong></a></p>
+    </footer>
+</body>
+
+</html>
