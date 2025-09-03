@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2025年7月30日工作记录，包括代码分析、项目检查等内容">
+    <title>2025-8-13 工作记录</title>
+    <style>
+        :root {
+            --accent: #0d6efd;
+            --bg: #fdfdfd;
+            --code-bg: #f5f5f5;
+        }
+
+        body {
+            max-width: 680px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: #333;
+        }
+
+        .title {
+            line-height: 1.2;
+            color: var(--accent);
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: .15em .3em;
+            border-radius: 3px;
+        }
+
+        footer {
+            clear: both;
+            text-align: left;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* 添加列表项间距 */
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">2025-8-13 工作记录</h1>
+
+    <main>
+        <p>今天的话主要做了以下事情:</p>
+
+        <ul>
+            <li><code>NGEDR</code>代码合并到develop</li>
+            <li>
+                下一步是<code>ersvc</code>中得对<code>NGEDR</code>的反向引用。然后在获取数据以后在做表格化处理，
+                目前的知道的方法是deploy种的ngedr配置文件种添加的配置文件，具体在deploy的位置是：f:\gopath\src\aiop\deploy\config\base\server\rpc\client.yaml
+                <img src="./img/1.png" alt="位置图片">
+            </li>
+            <li>
+                <code>ersvc</code>这边对于其的使用方式就是在本地用相同的proto文件生成调用方法
+                <img src="./img/2.png" alt="调用方法">
+            </li>
+
+        </ul>
+        <article>
+            <p>开始跳绳了没有犯懒：</p>
+
+            <ul>
+                <li>
+                    <p>小迷直播</p>
+                </li>
+            </ul>
+        </article>
+    </main>
+
+    <footer>
+        <p>欢迎关注我的Github：<a href="https://github.com/870869624"><strong>Master Jing</strong></a></p>
+        <p>欢迎关注我的Gitee：<a href="https://gitee.com/jing-haijun"><strong>Master Jing</strong></a></p>
+    </footer>
+</body>
+
+</html>
